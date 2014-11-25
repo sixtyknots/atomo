@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <option name="DEFAULT_COMPILER" value="Javac" />
+    <resourceExtensions>
+      <entry name=".+\.(properties|xml|html|dtd|tld)" />
+      <entry name=".+\.(gif|png|jpeg|jpg)" />
+    </resourceExtensions>
+    <wildcardResourcePatterns>
+      <entry name="?*.properties" />
+      <entry name="?*.xml" />
+      <entry name="?*.gif" />
+      <entry name="?*.png" />
+      <entry name="?*.jpeg" />
+      <entry name="?*.jpg" />
+      <entry name="?*.html" />
+      <entry name="?*.dtd" />
+      <entry name="?*.tld" />
+      <entry name="?*.ftl" />
+    </wildcardResourcePatterns>
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="false">
+        <processorPath useClasspath="true" />
+      </profile>
+      <profile default="false" name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="atomo_base" />
+        <module name="atomo_test" />
+        <module name="eips-core" />
+        <module name="inshape_admin" />
+        <module name="inshape_base" />
+        <module name="inshape_public" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="atomo" target="1.7" />
+      <module name="atomo_admin" target="1.7" />
+      <module name="atomo_base" target="1.7" />
+      <module name="atomo_test" target="1.7" />
+      <module name="atomo_ws" target="1.7" />
+      <module name="eips-core" target="1.7" />
+      <module name="inshape" target="1.7" />
+      <module name="inshape_admin" target="1.7" />
+      <module name="inshape_base" target="1.7" />
+      <module name="inshape_public" target="1.7" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
+

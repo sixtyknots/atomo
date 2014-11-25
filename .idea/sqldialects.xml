@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SqlDialectMappings">
+    <file url="file://$PROJECT_DIR$/db/scripts/alter_scripts/inshape_alter_v0.01.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/db/scripts/alter_scripts/inshape_alter_v0.02.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/db/scripts/alter_scripts/inshape_alter_v0.03.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/db/scripts/alter_scripts/inshape_alter_v0.04.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/db/scripts/alter_scripts/inshape_alter_v0.05.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/db/scripts/alter_scripts/inshape_alter_v0.06.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/db/scripts/alter_scripts/inshape_alter_v0.07.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/db/scripts/alter_scripts/inshape_alter_v0.08.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/db/scripts/alter_scripts/inshape_alter_v0.09.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/db/scripts/alter_scripts/inshape_alter_v0.10.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/db/scripts/alter_scripts/inshape_alter_v1.01.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/db/scripts/alter_scripts/inshape_alter_v1.02.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/db/scripts/alter_scripts/inshape_alter_v1.03.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/db/scripts/alter_scripts/inshape_alter_v1.04.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/db/scripts/alter_scripts/inshape_alter_v1.05.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/db/scripts/alter_scripts/inshape_alter_v1.06.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/db/scripts/alter_scripts/inshape_alter_v1.07.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/db/scripts/alter_scripts/inshape_alter_v1.08.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/db/scripts/alter_scripts/inshape_alter_v1.09.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/db/scripts/alter_scripts/inshape_alter_v1.10.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/db/scripts/alter_scripts/inshape_alter_v1.11.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/db/scripts/alter_scripts/inshape_alter_v1.12.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/db/scripts/alter_scripts/inshape_alter_v1.13.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/db/scripts/alter_scripts/inshape_alter_v1.14.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/db/scripts/alter_scripts/inshape_alter_v1.15.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/db/scripts/alter_scripts/inshape_alter_v1.16.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/db/scripts/initial_scripts/InShapeTranslations.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/db/scripts/initial_scripts/InshapeDDL.sql" dialect="MySQL" />
+  </component>
+</project>
+

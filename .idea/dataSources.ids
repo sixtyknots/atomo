@@ -1,0 +1,756 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source source="LOCAL" name="Local" product="MySQL" version="5.6.14-log" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.26 ( Revision: ${bzr.revision-id} )" uuid="ed071fa8-9fa9-49c3-b185-6c00b6e75de2">
+    <extra-name-characters>#@</extra-name-characters>
+    <identifier-quote-string>`</identifier-quote-string>
+    <synchronize>true</synchronize>
+    <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
+    <jdbc-url>jdbc:mysql://localhost:3306</jdbc-url>
+    <user-name>root</user-name>
+    <user-password>dfc7dfd3dfd9dfdbdfc6</user-password>
+    <schema-pattern>inshape.*</schema-pattern>
+    <default-schemas>inshape.*</default-schemas>
+    <default-dialect>MySQL</default-dialect>
+    <driver-properties>
+      <property name="characterEncoding" value="UTF-8"/>
+    </driver-properties>
+    <libraries>
+      <library>
+        <url>file://D:/Programming/Tools/mysql-connector-java-5.1.26/mysql-connector-java-5.1.26-bin.jar</url>
+      </library>
+    </libraries>
+    <schema name="" catalog="inshape"/>
+    <table name="availableequipmenttype" schema="" catalog="inshape" type="TABLE">
+      <column name="id" sqlType="VARCHAR" length="64" precision="0" nullable="false" jdbcType="12"/>
+      <column name="name" sqlType="VARCHAR" length="64" precision="0" nullable="false" jdbcType="12"/>
+      <column name="displayorder" sqlType="SMALLINT" length="5" precision="0" nullable="false" jdbcType="5"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="fk_user_availableequipment_idavailableequipmenttype" table="user_availableequipment" schema="" catalog="inshape" columns="idavailableequipmenttype"/>
+      <index name="uq_availableequipmenttype_displayorder" unique="true" columns="displayorder"/>
+    </table>
+    <table name="binarydata" schema="" catalog="inshape" type="TABLE">
+      <column name="id" sqlType="VARCHAR" length="8" precision="0" nullable="false" jdbcType="12"/>
+      <column name="binaryvalue" sqlType="LONGBLOB" length="2147483647" precision="0" nullable="false" jdbcType="-4"/>
+      <column name="idbinarydatatype" sqlType="VARCHAR" length="64" precision="0" nullable="false" jdbcType="12"/>
+      <column name="datecreated" sqlType="TIMESTAMP" length="19" precision="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA="/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="fk_binarydata_idbinarydatatype" columns="idbinarydatatype" ref-table="binarydatatype" ref-schema="" ref-catalog="inshape" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="fk_user_idbinarydata" table="user" schema="" catalog="inshape" columns="idbinarydata"/>
+      <index name="ix_binarydata_idbinarydatatype" unique="false" columns="idbinarydatatype"/>
+    </table>
+    <table name="binarydatatype" schema="" catalog="inshape" type="TABLE">
+      <column name="id" sqlType="VARCHAR" length="64" precision="0" nullable="false" jdbcType="12"/>
+      <column name="name" sqlType="VARCHAR" length="64" precision="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="fk_binarydata_idbinarydatatype" table="binarydata" schema="" catalog="inshape" columns="idbinarydatatype"/>
+    </table>
+    <table name="blog" schema="" catalog="inshape" type="TABLE">
+      <column name="id" sqlType="VARCHAR" length="8" precision="0" nullable="false" jdbcType="12"/>
+      <column name="iduser" sqlType="VARCHAR" length="8" precision="0" nullable="true" jdbcType="12"/>
+      <column name="idblogstatustype" sqlType="VARCHAR" length="64" precision="0" nullable="false" jdbcType="12" def="J1BFTkRJTkcn"/>
+      <column name="title" sqlType="VARCHAR" length="2000" precision="0" nullable="false" jdbcType="12"/>
+      <column name="blogtext" sqlType="VARCHAR" length="16000" precision="0" nullable="false" jdbcType="12"/>
+      <column name="isgoodtoknow" sqlType="BIT" length="1" precision="0" nullable="false" jdbcType="-7" def="YicwJw=="/>
+      <column name="datecreated" sqlType="TIMESTAMP" length="19" precision="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA="/>
+      <column name="dateupdated" sqlType="TIMESTAMP" length="19" precision="0" nullable="true" jdbcType="93"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="fk_blog_idblogstatustype" columns="idblogstatustype" ref-table="blogstatustype" ref-schema="" ref-catalog="inshape" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_blog_iduser" columns="iduser" ref-table="user" ref-schema="" ref-catalog="inshape" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="fk_blog_image_idblog" table="blog_image" schema="" catalog="inshape" columns="idblog"/>
+      <exported-key name="fk_blog_tag_idblog" table="blog_tag" schema="" catalog="inshape" columns="idblog"/>
+      <exported-key name="fk_blog_video_idblog" table="blog_video" schema="" catalog="inshape" columns="idblog"/>
+      <index name="ix_blog_idblogstatustype" unique="false" columns="idblogstatustype"/>
+      <index name="ix_blog_iduser" unique="false" columns="iduser"/>
+    </table>
+    <table name="blog_image" schema="" catalog="inshape" type="TABLE">
+      <column name="id" sqlType="VARCHAR" length="8" precision="0" nullable="false" jdbcType="12"/>
+      <column name="idblog" sqlType="VARCHAR" length="8" precision="0" nullable="false" jdbcType="12"/>
+      <column name="image" sqlType="BLOB" length="65535" precision="0" nullable="false" jdbcType="-4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="fk_blog_image_idblog" columns="idblog" ref-table="blog" ref-schema="" ref-catalog="inshape" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="ix_blog_image_idblog" unique="false" columns="idblog"/>
+    </table>
+    <table name="blog_tag" schema="" catalog="inshape" type="TABLE">
+      <column name="id" sqlType="VARCHAR" length="8" precision="0" nullable="false" jdbcType="12"/>
+      <column name="idblog" sqlType="VARCHAR" length="8" precision="0" nullable="false" jdbcType="12"/>
+      <column name="tag" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="fk_blog_tag_idblog" columns="idblog" ref-table="blog" ref-schema="" ref-catalog="inshape" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="ix_blog_tag_idblog" unique="false" columns="idblog"/>
+    </table>
+    <table name="blog_video" schema="" catalog="inshape" type="TABLE">
+      <column name="id" sqlType="VARCHAR" length="8" precision="0" nullable="false" jdbcType="12"/>
+      <column name="idblog" sqlType="VARCHAR" length="8" precision="0" nullable="false" jdbcType="12"/>
+      <column name="url" sqlType="VARCHAR" length="2000" precision="0" nullable="false" jdbcType="12"/>
+      <column name="idvideosourcetype" sqlType="VARCHAR" length="64" precision="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="fk_blog_video_idblog" columns="idblog" ref-table="blog" ref-schema="" ref-catalog="inshape" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_blog_video_idvideosourcetype" columns="idvideosourcetype" ref-table="videosourcetype" ref-schema="" ref-catalog="inshape" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="ix_blog_video_idblog" unique="false" columns="idblog"/>
+      <index name="ix_blog_video_idvideosourcetype" unique="false" columns="idvideosourcetype"/>
+    </table>
+    <table name="blogstatustype" schema="" catalog="inshape" type="TABLE">
+      <column name="id" sqlType="VARCHAR" length="64" precision="0" nullable="false" jdbcType="12"/>
+      <column name="name" sqlType="VARCHAR" length="64" precision="0" nullable="false" jdbcType="12"/>
+      <column name="displayorder" sqlType="SMALLINT" length="5" precision="0" nullable="false" jdbcType="5"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="fk_blog_idblogstatustype" table="blog" schema="" catalog="inshape" columns="idblogstatustype"/>
+      <index name="uq_blogstatustype_displayorder" unique="true" columns="displayorder"/>
+    </table>
+    <table name="company_language" schema="" catalog="inshape" type="TABLE">
+      <column name="idcompanytype" sqlType="VARCHAR" length="64" precision="0" nullable="false" jdbcType="12"/>
+      <column name="idlanguagetype" sqlType="VARCHAR" length="2" precision="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="idcompanytype,idlanguagetype"/>
+      <foreign-key name="fk_company_language_idcompanytype" columns="idcompanytype" ref-table="companytype" ref-schema="" ref-catalog="inshape" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_company_language_idlanguagetype" columns="idlanguagetype" ref-table="languagetype" ref-schema="" ref-catalog="inshape" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="ix_company_language_idlanguagetype" unique="false" columns="idlanguagetype"/>
+    </table>
+    <table name="companytype" schema="" catalog="inshape" type="TABLE">
+      <column name="id" sqlType="VARCHAR" length="64" precision="0" nullable="false" jdbcType="12"/>
+      <column name="name" sqlType="VARCHAR" length="64" precision="0" nullable="false" jdbcType="12"/>
+      <column name="website" sqlType="VARCHAR" length="256" precision="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="fk_company_language_idcompanytype" table="company_language" schema="" catalog="inshape" columns="idcompanytype"/>
+      <exported-key name="fk_user_idcompanytype" table="user" schema="" catalog="inshape" columns="idcompanytype"/>
+    </table>
+    <table name="connectiontype" schema="" catalog="inshape" type="TABLE">
+      <column name="id" sqlType="VARCHAR" length="64" precision="0" nullable="false" jdbcType="12"/>
+      <column name="name" sqlType="VARCHAR" length="64" precision="0" nullable="false" jdbcType="12"/>
+      <column name="displayorder" sqlType="SMALLINT" length="5" precision="0" nullable="false" jdbcType="5"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="fk_userconnection_idconnectiontype" table="user_connection" schema="" catalog="inshape" columns="idconnectiontype"/>
+      <index name="uq_connectiontype_displayorder" unique="true" columns="displayorder"/>
+    </table>
+    <table name="countrytype" schema="" catalog="inshape" type="TABLE">
+      <column name="id" sqlType="VARCHAR" length="2" precision="0" nullable="false" jdbcType="12"/>
+      <column name="name" sqlType="VARCHAR" length="64" precision="0" nullable="false" jdbcType="12"/>
+      <column name="isactive" sqlType="BIT" length="1" precision="0" nullable="false" jdbcType="-7" def="YicxJw=="/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="fk_user_idcountrytype" table="user" schema="" catalog="inshape" columns="idcountrytype"/>
+    </table>
+    <table name="dayofweektype" schema="" catalog="inshape" type="TABLE">
+      <column name="id" sqlType="VARCHAR" length="64" precision="0" nullable="false" jdbcType="12"/>
+      <column name="name" sqlType="VARCHAR" length="64" precision="0" nullable="false" jdbcType="12"/>
+      <column name="displayorder" sqlType="SMALLINT" length="5" precision="0" nullable="false" jdbcType="5"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="trainer_workinghours_ibfk_1" table="trainer_workinghours" schema="" catalog="inshape" columns="iddayofweektype"/>
+      <index name="uq_dayofweektype_displayorder" unique="true" columns="displayorder"/>
+    </table>
+    <table name="dbversion" schema="" catalog="inshape" type="TABLE">
+      <column name="iddbversion" sqlType="INT UNSIGNED" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="versionnumber" sqlType="VARCHAR" length="32" precision="0" nullable="false" jdbcType="12"/>
+      <column name="description" sqlType="VARCHAR" length="16000" precision="0" nullable="true" jdbcType="12"/>
+      <column name="startdate" sqlType="TIMESTAMP" length="19" precision="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA="/>
+      <column name="enddate" sqlType="TIMESTAMP" length="19" precision="0" nullable="true" jdbcType="93"/>
+      <primary-key name="PRIMARY" columns="iddbversion"/>
+    </table>
+    <table name="entitytype" schema="" catalog="inshape" type="TABLE">
+      <column name="id" sqlType="VARCHAR" length="64" precision="0" nullable="false" jdbcType="12"/>
+      <column name="name" sqlType="VARCHAR" length="64" precision="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="fk_translation_identitytype" table="translation" schema="" catalog="inshape" columns="identitytype"/>
+    </table>
+    <table name="forbiddenword" schema="" catalog="inshape" type="TABLE">
+      <column name="id" sqlType="VARCHAR" length="8" precision="0" nullable="false" jdbcType="12"/>
+      <column name="idlanguagetype" sqlType="VARCHAR" length="2" precision="0" nullable="false" jdbcType="12"/>
+      <column name="word" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="fk_forbiddenword_idlanguagetype" columns="idlanguagetype" ref-table="languagetype" ref-schema="" ref-catalog="inshape" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="ix_forbiddenword_idlanguagetype" unique="false" columns="idlanguagetype"/>
+    </table>
+    <table name="giftcard" schema="" catalog="inshape" type="TABLE">
+      <column name="id" sqlType="VARCHAR" length="8" precision="0" nullable="false" jdbcType="12"/>
+      <column name="iduser" sqlType="VARCHAR" length="8" precision="0" nullable="true" jdbcType="12"/>
+      <column name="email" sqlType="VARCHAR" length="128" precision="0" nullable="false" jdbcType="12"/>
+      <column name="verificationtoken" sqlType="VARCHAR" length="32" precision="0" nullable="false" jdbcType="12"/>
+      <column name="currentamount" sqlType="DOUBLE" length="22" precision="0" nullable="false" jdbcType="8"/>
+      <column name="usedamount" sqlType="DOUBLE" length="22" precision="0" nullable="true" jdbcType="8"/>
+      <column name="idgiftcardstatustype" sqlType="VARCHAR" length="64" precision="0" nullable="false" jdbcType="12" def="J1BFTkRJTkcn"/>
+      <column name="datecreated" sqlType="TIMESTAMP" length="19" precision="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA="/>
+      <column name="dateupdated" sqlType="TIMESTAMP" length="19" precision="0" nullable="true" jdbcType="93"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="fk_giftcard_idgiftcardstatustype" columns="idgiftcardstatustype" ref-table="giftcardstatustype" ref-schema="" ref-catalog="inshape" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_giftcard_iduser" columns="iduser" ref-table="user" ref-schema="" ref-catalog="inshape" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="fk_giftcard_transaction_idgiftcard" table="giftcard_transaction" schema="" catalog="inshape" columns="idgiftcard"/>
+      <index name="ix_giftcard_idgiftcardstatustype" unique="false" columns="idgiftcardstatustype"/>
+      <index name="ix_giftcard_iduser" unique="false" columns="iduser"/>
+    </table>
+    <table name="giftcard_transaction" schema="" catalog="inshape" type="TABLE">
+      <column name="idgiftcard" sqlType="VARCHAR" length="8" precision="0" nullable="false" jdbcType="12"/>
+      <column name="idtransaction" sqlType="VARCHAR" length="8" precision="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="idgiftcard,idtransaction"/>
+      <foreign-key name="fk_giftcard_transaction_idgiftcard" columns="idgiftcard" ref-table="giftcard" ref-schema="" ref-catalog="inshape" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_giftcard_transaction_idtransaction" columns="idtransaction" ref-table="transaction" ref-schema="" ref-catalog="inshape" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="ix_giftcard_transaction_idtransaction" unique="false" columns="idtransaction"/>
+    </table>
+    <table name="giftcardstatustype" schema="" catalog="inshape" type="TABLE">
+      <column name="id" sqlType="VARCHAR" length="64" precision="0" nullable="false" jdbcType="12"/>
+      <column name="name" sqlType="VARCHAR" length="64" precision="0" nullable="false" jdbcType="12"/>
+      <column name="displayorder" sqlType="SMALLINT" length="5" precision="0" nullable="false" jdbcType="5"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="fk_giftcard_idgiftcardstatustype" table="giftcard" schema="" catalog="inshape" columns="idgiftcardstatustype"/>
+      <index name="uq_gcstatustype_displayorder" unique="true" columns="displayorder"/>
+    </table>
+    <table name="goal_workouttype" schema="" catalog="inshape" type="TABLE">
+      <column name="idgoaltype" sqlType="VARCHAR" length="64" precision="0" nullable="false" jdbcType="12"/>
+      <column name="idworkouttype" sqlType="VARCHAR" length="64" precision="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="idgoaltype,idworkouttype"/>
+      <foreign-key name="fk_goal_workouttype_idgoaltype" columns="idgoaltype" ref-table="goaltype" ref-schema="" ref-catalog="inshape" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_goal_workouttype_idworkouttype" columns="idworkouttype" ref-table="workouttype" ref-schema="" ref-catalog="inshape" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="ix_goal_workouttype_idworkouttype" unique="false" columns="idworkouttype"/>
+    </table>
+    <table name="goaltype" schema="" catalog="inshape" type="TABLE">
+      <column name="id" sqlType="VARCHAR" length="64" precision="0" nullable="false" jdbcType="12"/>
+      <column name="name" sqlType="VARCHAR" length="64" precision="0" nullable="false" jdbcType="12"/>
+      <column name="displayorder" sqlType="SMALLINT" length="5" precision="0" nullable="false" jdbcType="5"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="fk_goal_workouttype_idgoaltype" table="goal_workouttype" schema="" catalog="inshape" columns="idgoaltype"/>
+      <exported-key name="fk_user_goal_idgoaltype" table="user_goal" schema="" catalog="inshape" columns="idgoaltype"/>
+      <index name="uq_goaltype_displayorder" unique="true" columns="displayorder"/>
+    </table>
+    <table name="healthhistorytype" schema="" catalog="inshape" type="TABLE">
+      <column name="id" sqlType="VARCHAR" length="64" precision="0" nullable="false" jdbcType="12"/>
+      <column name="name" sqlType="VARCHAR" length="2000" precision="0" nullable="false" jdbcType="12"/>
+      <column name="displayorder" sqlType="SMALLINT" length="5" precision="0" nullable="false" jdbcType="5"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="fk_user_healthhistory_idhealthhistorytype" table="user_healthhistory" schema="" catalog="inshape" columns="idhealthhistorytype"/>
+      <index name="uq_healthhistorytype_displayorder" unique="true" columns="displayorder"/>
+    </table>
+    <table name="languagetype" schema="" catalog="inshape" type="TABLE">
+      <column name="id" sqlType="VARCHAR" length="2" precision="0" nullable="false" jdbcType="12"/>
+      <column name="name" sqlType="VARCHAR" length="128" precision="0" nullable="false" jdbcType="12"/>
+      <column name="isactive" sqlType="BIT" length="1" precision="0" nullable="false" jdbcType="-7" def="YicxJw=="/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="fk_company_language_idlanguagetype" table="company_language" schema="" catalog="inshape" columns="idlanguagetype"/>
+      <exported-key name="fk_forbiddenword_idlanguagetype" table="forbiddenword" schema="" catalog="inshape" columns="idlanguagetype"/>
+      <exported-key name="fk_translation_idlanguagetype" table="translation" schema="" catalog="inshape" columns="idlanguagetype"/>
+      <exported-key name="fk_user_idinterfacelanguage" table="user" schema="" catalog="inshape" columns="idinterfacelanguage"/>
+      <exported-key name="fk_user_language_idlanguagetype" table="user_language" schema="" catalog="inshape" columns="idlanguagetype"/>
+    </table>
+    <table name="membershipstatustype" schema="" catalog="inshape" type="TABLE">
+      <column name="id" sqlType="VARCHAR" length="64" precision="0" nullable="false" jdbcType="12"/>
+      <column name="name" sqlType="VARCHAR" length="64" precision="0" nullable="false" jdbcType="12"/>
+      <column name="displayorder" sqlType="SMALLINT" length="5" precision="0" nullable="false" jdbcType="5"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="fk_trainermembership_idmembershipstatustype" table="trainermembership" schema="" catalog="inshape" columns="idmembershipstatustype"/>
+      <index name="uq_membershipstatustype_displayorder" unique="true" columns="displayorder"/>
+    </table>
+    <table name="message" schema="" catalog="inshape" type="TABLE">
+      <column name="id" sqlType="VARCHAR" length="8" precision="0" nullable="false" jdbcType="12"/>
+      <column name="iduserfrom" sqlType="VARCHAR" length="8" precision="0" nullable="false" jdbcType="12"/>
+      <column name="iduserto" sqlType="VARCHAR" length="8" precision="0" nullable="false" jdbcType="12"/>
+      <column name="idparentmessage" sqlType="VARCHAR" length="8" precision="0" nullable="true" jdbcType="12"/>
+      <column name="subject" sqlType="VARCHAR" length="2000" precision="0" nullable="true" jdbcType="12"/>
+      <column name="messagetext" sqlType="VARCHAR" length="16000" precision="0" nullable="false" jdbcType="12"/>
+      <column name="idmessagestatustype" sqlType="VARCHAR" length="64" precision="0" nullable="false" jdbcType="12" def="J1VOUkVBRCc="/>
+      <column name="datecreated" sqlType="TIMESTAMP" length="19" precision="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA="/>
+      <column name="dateupdated" sqlType="TIMESTAMP" length="19" precision="0" nullable="true" jdbcType="93"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="fk_message_idmessagestatustype" columns="idmessagestatustype" ref-table="messagestatustype" ref-schema="" ref-catalog="inshape" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_message_idparentmessage" columns="idparentmessage" ref-table="message" ref-schema="" ref-catalog="inshape" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_message_iduserfrom" columns="iduserfrom" ref-table="user" ref-schema="" ref-catalog="inshape" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_message_iduserto" columns="iduserto" ref-table="user" ref-schema="" ref-catalog="inshape" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="fk_message_idparentmessage" table="message" schema="" catalog="inshape" columns="idparentmessage"/>
+      <index name="ix_message_idmessagestatustype" unique="false" columns="idmessagestatustype"/>
+      <index name="ix_message_idparentmessage" unique="false" columns="idparentmessage"/>
+      <index name="ix_message_iduserfrom" unique="false" columns="iduserfrom"/>
+      <index name="ix_message_iduserto" unique="false" columns="iduserto"/>
+    </table>
+    <table name="messagestatustype" schema="" catalog="inshape" type="TABLE">
+      <column name="id" sqlType="VARCHAR" length="64" precision="0" nullable="false" jdbcType="12"/>
+      <column name="name" sqlType="VARCHAR" length="64" precision="0" nullable="false" jdbcType="12"/>
+      <column name="displayorder" sqlType="SMALLINT" length="5" precision="0" nullable="false" jdbcType="5"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="fk_message_idmessagestatustype" table="message" schema="" catalog="inshape" columns="idmessagestatustype"/>
+      <index name="uq_msgstatustype_displayorder" unique="true" columns="displayorder"/>
+    </table>
+    <table name="musclegrouptype" schema="" catalog="inshape" type="TABLE">
+      <column name="id" sqlType="VARCHAR" length="64" precision="0" nullable="false" jdbcType="12"/>
+      <column name="name" sqlType="VARCHAR" length="64" precision="0" nullable="false" jdbcType="12"/>
+      <column name="displayorder" sqlType="SMALLINT" length="5" precision="0" nullable="false" jdbcType="5"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="fk_trainingreport_musclegroup_idmusclegrouptype" table="trainingreport_musclegroup" schema="" catalog="inshape" columns="idmusclegrouptype"/>
+      <index name="uq_musclegrouptype_displayorder" unique="true" columns="displayorder"/>
+    </table>
+    <table name="notificationkindtype" schema="" catalog="inshape" type="TABLE">
+      <column name="id" sqlType="VARCHAR" length="64" precision="0" nullable="false" jdbcType="12"/>
+      <column name="name" sqlType="VARCHAR" length="64" precision="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="fk_usernotification_idnotificationkindtype" table="usernotification" schema="" catalog="inshape" columns="idnotificationkindtype"/>
+    </table>
+    <table name="notificationmethodtype" schema="" catalog="inshape" type="TABLE">
+      <column name="id" sqlType="VARCHAR" length="64" precision="0" nullable="false" jdbcType="12"/>
+      <column name="name" sqlType="VARCHAR" length="64" precision="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="fk_usernotification_idnotificationmethodtype" table="usernotification" schema="" catalog="inshape" columns="idnotificationmethodtype"/>
+    </table>
+    <table name="registrationtype" schema="" catalog="inshape" type="TABLE">
+      <column name="id" sqlType="VARCHAR" length="64" precision="0" nullable="false" jdbcType="12"/>
+      <column name="name" sqlType="VARCHAR" length="64" precision="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="fk_user_idregistrationtype" table="user" schema="" catalog="inshape" columns="idregistrationtype"/>
+    </table>
+    <table name="roletype" schema="" catalog="inshape" type="TABLE">
+      <column name="id" sqlType="VARCHAR" length="64" precision="0" nullable="false" jdbcType="12"/>
+      <column name="name" sqlType="VARCHAR" length="64" precision="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="fk_user_idroletype" table="user" schema="" catalog="inshape" columns="idroletype"/>
+    </table>
+    <table name="session" schema="" catalog="inshape" type="TABLE">
+      <column name="id" sqlType="VARCHAR" length="32" precision="0" nullable="false" jdbcType="12"/>
+      <column name="iduser" sqlType="VARCHAR" length="8" precision="0" nullable="false" jdbcType="12"/>
+      <column name="ipaddress" sqlType="VARCHAR" length="32" precision="0" nullable="true" jdbcType="12"/>
+      <column name="startdate" sqlType="TIMESTAMP" length="19" precision="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA="/>
+      <column name="expiresdate" sqlType="TIMESTAMP" length="19" precision="0" nullable="true" jdbcType="93"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="fk_session_iduser" columns="iduser" ref-table="user" ref-schema="" ref-catalog="inshape" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="ix_session_iduser" unique="false" columns="iduser"/>
+    </table>
+    <table name="suspension" schema="" catalog="inshape" type="TABLE">
+      <column name="id" sqlType="VARCHAR" length="8" precision="0" nullable="false" jdbcType="12"/>
+      <column name="iduser" sqlType="VARCHAR" length="8" precision="0" nullable="false" jdbcType="12"/>
+      <column name="datesuspendeduntil" sqlType="TIMESTAMP" length="19" precision="0" nullable="true" jdbcType="93"/>
+      <column name="ispermanent" sqlType="BIT" length="1" precision="0" nullable="false" jdbcType="-7" def="YicwJw=="/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="fk_suspension_iduser" columns="iduser" ref-table="user" ref-schema="" ref-catalog="inshape" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="ix_suspension_iduser" unique="false" columns="iduser"/>
+    </table>
+    <table name="tempotype" schema="" catalog="inshape" type="TABLE">
+      <column name="id" sqlType="VARCHAR" length="64" precision="0" nullable="false" jdbcType="12"/>
+      <column name="name" sqlType="VARCHAR" length="64" precision="0" nullable="false" jdbcType="12"/>
+      <column name="displayorder" sqlType="SMALLINT" length="5" precision="0" nullable="false" jdbcType="5"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="fk_trainingreport_idtempotype" table="trainingreport" schema="" catalog="inshape" columns="idtempotype"/>
+      <index name="uq_tempotype_displayorder" unique="true" columns="displayorder"/>
+    </table>
+    <table name="timezonetype" schema="" catalog="inshape" type="TABLE">
+      <column name="id" sqlType="VARCHAR" length="64" precision="0" nullable="false" jdbcType="12"/>
+      <column name="name" sqlType="VARCHAR" length="64" precision="0" nullable="false" jdbcType="12"/>
+      <column name="isactive" sqlType="BIT" length="1" precision="0" nullable="false" jdbcType="-7" def="YicxJw=="/>
+      <column name="displayorder" sqlType="SMALLINT" length="5" precision="0" nullable="false" jdbcType="5"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="fk_user_idtimezonetype" table="user" schema="" catalog="inshape" columns="idtimezonetype"/>
+    </table>
+    <table name="trainer_video" schema="" catalog="inshape" type="TABLE">
+      <column name="id" sqlType="VARCHAR" length="8" precision="0" nullable="false" jdbcType="12"/>
+      <column name="iduser" sqlType="VARCHAR" length="8" precision="0" nullable="false" jdbcType="12"/>
+      <column name="url" sqlType="VARCHAR" length="2000" precision="0" nullable="false" jdbcType="12"/>
+      <column name="idvideosourcetype" sqlType="VARCHAR" length="64" precision="0" nullable="false" jdbcType="12"/>
+      <column name="isdefault" sqlType="BIT" length="1" precision="0" nullable="false" jdbcType="-7" def="YicwJw=="/>
+      <column name="description" sqlType="VARCHAR" length="4000" precision="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="fk_trainer_video_iduser" columns="iduser" ref-table="user" ref-schema="" ref-catalog="inshape" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_trainer_video_idvideosourcetype" columns="idvideosourcetype" ref-table="videosourcetype" ref-schema="" ref-catalog="inshape" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="ix_trainer_video_iduser" unique="false" columns="iduser"/>
+      <index name="ix_trainer_video_idvideosourcetype" unique="false" columns="idvideosourcetype"/>
+    </table>
+    <table name="trainer_workhours" schema="" catalog="inshape" type="TABLE">
+      <column name="id" sqlType="VARCHAR" length="8" precision="0" nullable="false" jdbcType="12"/>
+      <column name="idtrainer" sqlType="VARCHAR" length="8" precision="0" nullable="false" jdbcType="12"/>
+      <column name="datestart" sqlType="TIMESTAMP" length="19" precision="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA=" version="true"/>
+      <column name="dateend" sqlType="TIMESTAMP" length="19" precision="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="fk_trainer_workhours_idtrainer" columns="idtrainer" ref-table="user" ref-schema="" ref-catalog="inshape" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="ix_trainer_workhours_idtrainer" unique="false" columns="idtrainer"/>
+    </table>
+    <table name="trainer_workinghours" schema="" catalog="inshape" type="TABLE">
+      <column name="id" sqlType="VARCHAR" length="8" precision="0" nullable="false" jdbcType="12"/>
+      <column name="idtrainer" sqlType="VARCHAR" length="8" precision="0" nullable="false" jdbcType="12"/>
+      <column name="idworkinghourstype" sqlType="VARCHAR" length="64" precision="0" nullable="false" jdbcType="12"/>
+      <column name="iddayofweektype" sqlType="VARCHAR" length="64" precision="0" nullable="true" jdbcType="12"/>
+      <column name="starttime" sqlType="VARCHAR" length="32" precision="0" nullable="true" jdbcType="12"/>
+      <column name="endtime" sqlType="VARCHAR" length="32" precision="0" nullable="true" jdbcType="12"/>
+      <column name="dateexception" sqlType="DATE" length="10" precision="0" nullable="true" jdbcType="91"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="trainer_workinghours_ibfk_1" columns="iddayofweektype" ref-table="dayofweektype" ref-schema="" ref-catalog="inshape" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="trainer_workinghours_ibfk_2" columns="idtrainer" ref-table="user" ref-schema="" ref-catalog="inshape" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="trainer_workinghours_ibfk_3" columns="idworkinghourstype" ref-table="workinghourstype" ref-schema="" ref-catalog="inshape" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+    </table>
+    <table name="trainer_workouttype" schema="" catalog="inshape" type="TABLE">
+      <column name="iduser" sqlType="VARCHAR" length="8" precision="0" nullable="false" jdbcType="12"/>
+      <column name="idworkouttype" sqlType="VARCHAR" length="64" precision="0" nullable="false" jdbcType="12"/>
+      <column name="price" sqlType="DOUBLE" length="22" precision="0" nullable="false" jdbcType="8"/>
+      <primary-key name="PRIMARY" columns="iduser,idworkouttype"/>
+      <foreign-key name="fk_trainer_workouttype_iduser" columns="iduser" ref-table="user" ref-schema="" ref-catalog="inshape" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_trainer_workouttype_idworkouttype" columns="idworkouttype" ref-table="workouttype" ref-schema="" ref-catalog="inshape" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="ix_trainer_workouttype_idworkouttype" unique="false" columns="idworkouttype"/>
+    </table>
+    <table name="trainercomment" schema="" catalog="inshape" type="TABLE">
+      <column name="id" sqlType="VARCHAR" length="8" precision="0" nullable="false" jdbcType="12"/>
+      <column name="idtrainer" sqlType="VARCHAR" length="8" precision="0" nullable="false" jdbcType="12"/>
+      <column name="idtrainee" sqlType="VARCHAR" length="8" precision="0" nullable="false" jdbcType="12"/>
+      <column name="comment" sqlType="VARCHAR" length="4000" precision="0" nullable="true" jdbcType="12"/>
+      <column name="rate" sqlType="TINYINT UNSIGNED" length="3" precision="0" nullable="false" jdbcType="-6"/>
+      <column name="datecreated" sqlType="TIMESTAMP" length="19" precision="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA="/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="fk_trainercomment_idtrainee" columns="idtrainee" ref-table="user" ref-schema="" ref-catalog="inshape" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_trainercomment_idtrainer" columns="idtrainer" ref-table="user" ref-schema="" ref-catalog="inshape" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="ix_trainercomment_idtrainee" unique="false" columns="idtrainee"/>
+      <index name="ix_trainercomment_idtrainer" unique="false" columns="idtrainer"/>
+    </table>
+    <table name="trainerinfo" schema="" catalog="inshape" type="TABLE">
+      <column name="idtrainer" sqlType="VARCHAR" length="8" precision="0" nullable="false" jdbcType="12"/>
+      <column name="biography" sqlType="TEXT" length="65535" precision="0" nullable="true" jdbcType="-1"/>
+      <column name="trainingstyle" sqlType="TEXT" length="65535" precision="0" nullable="true" jdbcType="-1"/>
+      <primary-key name="PRIMARY" columns="idtrainer"/>
+      <foreign-key name="fk_trainerinfo_idtrainer" columns="idtrainer" ref-table="user" ref-schema="" ref-catalog="inshape" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+    </table>
+    <table name="trainermembership" schema="" catalog="inshape" type="TABLE">
+      <column name="id" sqlType="VARCHAR" length="8" precision="0" nullable="false" jdbcType="12"/>
+      <column name="iduser" sqlType="VARCHAR" length="8" precision="0" nullable="true" jdbcType="12"/>
+      <column name="amount" sqlType="DOUBLE" length="22" precision="0" nullable="false" jdbcType="8"/>
+      <column name="paidamount" sqlType="DOUBLE" length="22" precision="0" nullable="true" jdbcType="8"/>
+      <column name="idmembershipstatustype" sqlType="VARCHAR" length="64" precision="0" nullable="false" jdbcType="12" def="J1BFTkRJTkcn"/>
+      <column name="startdate" sqlType="TIMESTAMP" length="19" precision="0" nullable="true" jdbcType="93"/>
+      <column name="enddate" sqlType="TIMESTAMP" length="19" precision="0" nullable="true" jdbcType="93"/>
+      <column name="datecreated" sqlType="TIMESTAMP" length="19" precision="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA="/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="fk_trainermembership_idmembershipstatustype" columns="idmembershipstatustype" ref-table="membershipstatustype" ref-schema="" ref-catalog="inshape" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_trainermembership_iduser" columns="iduser" ref-table="user" ref-schema="" ref-catalog="inshape" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="ix_trainermembership_idmembershipstatustype" unique="false" columns="idmembershipstatustype"/>
+      <index name="ix_trainermembership_iduser" unique="false" columns="iduser"/>
+    </table>
+    <table name="training" schema="" catalog="inshape" type="TABLE">
+      <column name="id" sqlType="VARCHAR" length="8" precision="0" nullable="false" jdbcType="12"/>
+      <column name="idtrainee" sqlType="VARCHAR" length="8" precision="0" nullable="false" jdbcType="12"/>
+      <column name="idtrainer" sqlType="VARCHAR" length="8" precision="0" nullable="false" jdbcType="12"/>
+      <column name="idworkouttype" sqlType="VARCHAR" length="64" precision="0" nullable="false" jdbcType="12"/>
+      <column name="title" sqlType="VARCHAR" length="256" precision="0" nullable="true" jdbcType="12"/>
+      <column name="datestart" sqlType="TIMESTAMP" length="19" precision="0" nullable="true" jdbcType="93"/>
+      <column name="dateend" sqlType="TIMESTAMP" length="19" precision="0" nullable="true" jdbcType="93"/>
+      <column name="idtrainingstatustype" sqlType="VARCHAR" length="64" precision="0" nullable="false" jdbcType="12" def="J1BFTkRJTkcn"/>
+      <column name="istraineealone" sqlType="BIT" length="1" precision="0" nullable="false" jdbcType="-7" def="YicwJw=="/>
+      <column name="datetraineealone" sqlType="TIMESTAMP" length="19" precision="0" nullable="true" jdbcType="93"/>
+      <column name="istraineralone" sqlType="BIT" length="1" precision="0" nullable="false" jdbcType="-7" def="YicwJw=="/>
+      <column name="datetraineralone" sqlType="TIMESTAMP" length="19" precision="0" nullable="true" jdbcType="93"/>
+      <column name="datecreated" sqlType="TIMESTAMP" length="19" precision="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA="/>
+      <column name="dateupdated" sqlType="TIMESTAMP" length="19" precision="0" nullable="true" jdbcType="93"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="fk_training_idtrainee" columns="idtrainee" ref-table="user" ref-schema="" ref-catalog="inshape" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_training_idtrainer" columns="idtrainer" ref-table="user" ref-schema="" ref-catalog="inshape" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_training_idtrainingstatustype" columns="idtrainingstatustype" ref-table="trainingstatustype" ref-schema="" ref-catalog="inshape" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_training_idworkouttype" columns="idworkouttype" ref-table="workouttype" ref-schema="" ref-catalog="inshape" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="fk_trainingreport_idtraining" table="trainingreport" schema="" catalog="inshape" columns="idtraining"/>
+      <exported-key name="fk_transaction_idtraining" table="transaction" schema="" catalog="inshape" columns="idtraining"/>
+      <exported-key name="fk_usernotification_idtraining" table="usernotification" schema="" catalog="inshape" columns="idtraining"/>
+      <index name="ix_training_idtrainee" unique="false" columns="idtrainee"/>
+      <index name="ix_training_idtrainer" unique="false" columns="idtrainer"/>
+      <index name="ix_training_idtrainingstatustype" unique="false" columns="idtrainingstatustype"/>
+      <index name="ix_training_idworkouttype" unique="false" columns="idworkouttype"/>
+    </table>
+    <table name="traininghandledtype" schema="" catalog="inshape" type="TABLE">
+      <column name="id" sqlType="VARCHAR" length="64" precision="0" nullable="false" jdbcType="12"/>
+      <column name="name" sqlType="VARCHAR" length="64" precision="0" nullable="false" jdbcType="12"/>
+      <column name="displayorder" sqlType="SMALLINT" length="5" precision="0" nullable="false" jdbcType="5"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="fk_trainingreport_idtraininghandledtype" table="trainingreport" schema="" catalog="inshape" columns="idtraininghandledtype"/>
+      <index name="uq_traininghandledtype_displayorder" unique="true" columns="displayorder"/>
+    </table>
+    <table name="trainingreport" schema="" catalog="inshape" type="TABLE">
+      <column name="id" sqlType="VARCHAR" length="8" precision="0" nullable="false" jdbcType="12"/>
+      <column name="idtraining" sqlType="VARCHAR" length="8" precision="0" nullable="true" jdbcType="12"/>
+      <column name="rate" sqlType="TINYINT UNSIGNED" length="3" precision="0" nullable="false" jdbcType="-6"/>
+      <column name="idtempotype" sqlType="VARCHAR" length="64" precision="0" nullable="false" jdbcType="12"/>
+      <column name="idtraininghandledtype" sqlType="VARCHAR" length="64" precision="0" nullable="false" jdbcType="12"/>
+      <column name="impression" sqlType="VARCHAR" length="4000" precision="0" nullable="true" jdbcType="12"/>
+      <column name="comment" sqlType="VARCHAR" length="4000" precision="0" nullable="true" jdbcType="12"/>
+      <column name="datecreated" sqlType="TIMESTAMP" length="19" precision="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA="/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="fk_trainingreport_idtempotype" columns="idtempotype" ref-table="tempotype" ref-schema="" ref-catalog="inshape" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_trainingreport_idtraining" columns="idtraining" ref-table="training" ref-schema="" ref-catalog="inshape" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_trainingreport_idtraininghandledtype" columns="idtraininghandledtype" ref-table="traininghandledtype" ref-schema="" ref-catalog="inshape" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="fk_trainingreport_musclegroup_idtrainingreport" table="trainingreport_musclegroup" schema="" catalog="inshape" columns="idtrainingreport"/>
+      <index name="ix_trainingreport_idtempotype" unique="false" columns="idtempotype"/>
+      <index name="ix_trainingreport_idtraining" unique="false" columns="idtraining"/>
+      <index name="ix_trainingreport_idtraininghandledtype" unique="false" columns="idtraininghandledtype"/>
+    </table>
+    <table name="trainingreport_musclegroup" schema="" catalog="inshape" type="TABLE">
+      <column name="idtrainingreport" sqlType="VARCHAR" length="8" precision="0" nullable="false" jdbcType="12"/>
+      <column name="idmusclegrouptype" sqlType="VARCHAR" length="64" precision="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="idtrainingreport,idmusclegrouptype"/>
+      <foreign-key name="fk_trainingreport_musclegroup_idmusclegrouptype" columns="idmusclegrouptype" ref-table="musclegrouptype" ref-schema="" ref-catalog="inshape" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_trainingreport_musclegroup_idtrainingreport" columns="idtrainingreport" ref-table="trainingreport" ref-schema="" ref-catalog="inshape" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="ix_trainingreport_musclegroup_idmusclegrouptype" unique="false" columns="idmusclegrouptype"/>
+    </table>
+    <table name="trainingstatustype" schema="" catalog="inshape" type="TABLE">
+      <column name="id" sqlType="VARCHAR" length="64" precision="0" nullable="false" jdbcType="12"/>
+      <column name="name" sqlType="VARCHAR" length="64" precision="0" nullable="false" jdbcType="12"/>
+      <column name="displayorder" sqlType="SMALLINT" length="5" precision="0" nullable="false" jdbcType="5"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="fk_training_idtrainingstatustype" table="training" schema="" catalog="inshape" columns="idtrainingstatustype"/>
+      <index name="uq_trainingstatustype_displayorder" unique="true" columns="displayorder"/>
+    </table>
+    <table name="transaction" schema="" catalog="inshape" type="TABLE">
+      <column name="id" sqlType="VARCHAR" length="8" precision="0" nullable="false" jdbcType="12"/>
+      <column name="idtransactiontype" sqlType="VARCHAR" length="64" precision="0" nullable="false" jdbcType="12"/>
+      <column name="iduser" sqlType="VARCHAR" length="8" precision="0" nullable="false" jdbcType="12"/>
+      <column name="amount" sqlType="DOUBLE" length="22" precision="0" nullable="false" jdbcType="8"/>
+      <column name="idtraining" sqlType="VARCHAR" length="8" precision="0" nullable="true" jdbcType="12"/>
+      <column name="idtransactionstatustype" sqlType="VARCHAR" length="64" precision="0" nullable="false" jdbcType="12" def="J1BFTkRJTkcn"/>
+      <column name="datecreated" sqlType="TIMESTAMP" length="19" precision="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA="/>
+      <column name="dateupdated" sqlType="TIMESTAMP" length="19" precision="0" nullable="true" jdbcType="93"/>
+      <column name="idparenttransaction" sqlType="VARCHAR" length="8" precision="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="fk_transaction_idparenttransaction" columns="idparenttransaction" ref-table="transaction" ref-schema="" ref-catalog="inshape" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_transaction_idtraining" columns="idtraining" ref-table="training" ref-schema="" ref-catalog="inshape" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_transaction_idtransactionstatustype" columns="idtransactionstatustype" ref-table="transactionstatustype" ref-schema="" ref-catalog="inshape" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_transaction_idtransactiontype" columns="idtransactiontype" ref-table="transactiontype" ref-schema="" ref-catalog="inshape" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_transaction_iduser" columns="iduser" ref-table="user" ref-schema="" ref-catalog="inshape" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="fk_giftcard_transaction_idtransaction" table="giftcard_transaction" schema="" catalog="inshape" columns="idtransaction"/>
+      <exported-key name="fk_transaction_idparenttransaction" table="transaction" schema="" catalog="inshape" columns="idparenttransaction"/>
+      <index name="ix_transaction_idparenttransaction" unique="false" columns="idparenttransaction"/>
+      <index name="ix_transaction_idtraining" unique="false" columns="idtraining"/>
+      <index name="ix_transaction_idtransactionstatustype" unique="false" columns="idtransactionstatustype"/>
+      <index name="ix_transaction_idtransactiontype" unique="false" columns="idtransactiontype"/>
+      <index name="ix_transaction_iduser" unique="false" columns="iduser"/>
+    </table>
+    <table name="transactionstatustype" schema="" catalog="inshape" type="TABLE">
+      <column name="id" sqlType="VARCHAR" length="64" precision="0" nullable="false" jdbcType="12"/>
+      <column name="name" sqlType="VARCHAR" length="64" precision="0" nullable="false" jdbcType="12"/>
+      <column name="displayorder" sqlType="SMALLINT" length="5" precision="0" nullable="false" jdbcType="5"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="fk_transaction_idtransactionstatustype" table="transaction" schema="" catalog="inshape" columns="idtransactionstatustype"/>
+      <index name="uq_transactionstatustype_displayorder" unique="true" columns="displayorder"/>
+    </table>
+    <table name="transactiontype" schema="" catalog="inshape" type="TABLE">
+      <column name="id" sqlType="VARCHAR" length="64" precision="0" nullable="false" jdbcType="12"/>
+      <column name="description" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>
+      <column name="kind" sqlType="VARCHAR" length="32" precision="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="fk_transaction_idtransactiontype" table="transaction" schema="" catalog="inshape" columns="idtransactiontype"/>
+    </table>
+    <table name="translation" schema="" catalog="inshape" type="TABLE">
+      <column name="id" sqlType="INT UNSIGNED" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="identitytype" sqlType="VARCHAR" length="64" precision="0" nullable="false" jdbcType="12"/>
+      <column name="idlanguagetype" sqlType="VARCHAR" length="2" precision="0" nullable="false" jdbcType="12"/>
+      <column name="code" sqlType="VARCHAR" length="256" precision="0" nullable="true" jdbcType="12"/>
+      <column name="name" sqlType="TEXT" length="65535" precision="0" nullable="true" jdbcType="-1"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="fk_translation_identitytype" columns="identitytype" ref-table="entitytype" ref-schema="" ref-catalog="inshape" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_translation_idlanguagetype" columns="idlanguagetype" ref-table="languagetype" ref-schema="" ref-catalog="inshape" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="ix_translation_identitytype" unique="false" columns="identitytype"/>
+      <index name="ix_translation_idlanguagetype" unique="false" columns="idlanguagetype"/>
+    </table>
+    <table name="user" schema="" catalog="inshape" type="TABLE">
+      <column name="id" sqlType="VARCHAR" length="8" precision="0" nullable="false" jdbcType="12"/>
+      <column name="idroletype" sqlType="VARCHAR" length="64" precision="0" nullable="false" jdbcType="12"/>
+      <column name="email" sqlType="VARCHAR" length="64" precision="0" nullable="false" jdbcType="12"/>
+      <column name="username" sqlType="VARCHAR" length="64" precision="0" nullable="false" jdbcType="12"/>
+      <column name="password" sqlType="VARCHAR" length="32" precision="0" nullable="true" jdbcType="12"/>
+      <column name="firstname" sqlType="VARCHAR" length="32" precision="0" nullable="false" jdbcType="12"/>
+      <column name="lastname" sqlType="VARCHAR" length="32" precision="0" nullable="false" jdbcType="12"/>
+      <column name="idtimezonetype" sqlType="VARCHAR" length="64" precision="0" nullable="true" jdbcType="12"/>
+      <column name="idcountrytype" sqlType="VARCHAR" length="2" precision="0" nullable="true" jdbcType="12"/>
+      <column name="idbinarydata" sqlType="VARCHAR" length="8" precision="0" nullable="true" jdbcType="12"/>
+      <column name="idregistrationtype" sqlType="VARCHAR" length="64" precision="0" nullable="false" jdbcType="12"/>
+      <column name="dateofbirth" sqlType="DATE" length="10" precision="0" nullable="true" jdbcType="91"/>
+      <column name="isconfirmed" sqlType="BIT" length="1" precision="0" nullable="false" jdbcType="-7" def="YicwJw=="/>
+      <column name="isauthorized" sqlType="BIT" length="1" precision="0" nullable="false" jdbcType="-7" def="YicwJw=="/>
+      <column name="iduserstatustype" sqlType="VARCHAR" length="64" precision="0" nullable="false" jdbcType="12" def="J0FDVElWRSc="/>
+      <column name="isfirsttime" sqlType="BIT" length="1" precision="0" nullable="false" jdbcType="-7" def="YicxJw=="/>
+      <column name="idcompanytype" sqlType="VARCHAR" length="64" precision="0" nullable="true" jdbcType="12"/>
+      <column name="gender" sqlType="ENUM" length="2" precision="0" nullable="true" jdbcType="1"/>
+      <column name="idinterfacelanguage" sqlType="VARCHAR" length="2" precision="0" nullable="true" jdbcType="12"/>
+      <column name="datecreated" sqlType="TIMESTAMP" length="19" precision="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA="/>
+      <column name="dateupdated" sqlType="TIMESTAMP" length="19" precision="0" nullable="true" jdbcType="93"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="fk_user_idbinarydata" columns="idbinarydata" ref-table="binarydata" ref-schema="" ref-catalog="inshape" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_user_idcompanytype" columns="idcompanytype" ref-table="companytype" ref-schema="" ref-catalog="inshape" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_user_idcountrytype" columns="idcountrytype" ref-table="countrytype" ref-schema="" ref-catalog="inshape" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_user_idinterfacelanguage" columns="idinterfacelanguage" ref-table="languagetype" ref-schema="" ref-catalog="inshape" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_user_idregistrationtype" columns="idregistrationtype" ref-table="registrationtype" ref-schema="" ref-catalog="inshape" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_user_idroletype" columns="idroletype" ref-table="roletype" ref-schema="" ref-catalog="inshape" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_user_idtimezonetype" columns="idtimezonetype" ref-table="timezonetype" ref-schema="" ref-catalog="inshape" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="fk_blog_iduser" table="blog" schema="" catalog="inshape" columns="iduser"/>
+      <exported-key name="fk_giftcard_iduser" table="giftcard" schema="" catalog="inshape" columns="iduser"/>
+      <exported-key name="fk_message_iduserfrom" table="message" schema="" catalog="inshape" columns="iduserfrom"/>
+      <exported-key name="fk_message_iduserto" table="message" schema="" catalog="inshape" columns="iduserto"/>
+      <exported-key name="fk_session_iduser" table="session" schema="" catalog="inshape" columns="iduser"/>
+      <exported-key name="fk_suspension_iduser" table="suspension" schema="" catalog="inshape" columns="iduser"/>
+      <exported-key name="fk_trainer_video_iduser" table="trainer_video" schema="" catalog="inshape" columns="iduser"/>
+      <exported-key name="fk_trainer_workhours_idtrainer" table="trainer_workhours" schema="" catalog="inshape" columns="idtrainer"/>
+      <exported-key name="trainer_workinghours_ibfk_2" table="trainer_workinghours" schema="" catalog="inshape" columns="idtrainer"/>
+      <exported-key name="fk_trainer_workouttype_iduser" table="trainer_workouttype" schema="" catalog="inshape" columns="iduser"/>
+      <exported-key name="fk_trainercomment_idtrainee" table="trainercomment" schema="" catalog="inshape" columns="idtrainee"/>
+      <exported-key name="fk_trainercomment_idtrainer" table="trainercomment" schema="" catalog="inshape" columns="idtrainer"/>
+      <exported-key name="fk_trainerinfo_idtrainer" table="trainerinfo" schema="" catalog="inshape" columns="idtrainer"/>
+      <exported-key name="fk_trainermembership_iduser" table="trainermembership" schema="" catalog="inshape" columns="iduser"/>
+      <exported-key name="fk_training_idtrainee" table="training" schema="" catalog="inshape" columns="idtrainee"/>
+      <exported-key name="fk_training_idtrainer" table="training" schema="" catalog="inshape" columns="idtrainer"/>
+      <exported-key name="fk_transaction_iduser" table="transaction" schema="" catalog="inshape" columns="iduser"/>
+      <exported-key name="fk_user_availableequipment_iduser" table="user_availableequipment" schema="" catalog="inshape" columns="iduser"/>
+      <exported-key name="fk_userconnection_iduser" table="user_connection" schema="" catalog="inshape" columns="iduser"/>
+      <exported-key name="fk_user_goal_iduser" table="user_goal" schema="" catalog="inshape" columns="iduser"/>
+      <exported-key name="fk_user_healthhistory_iduser" table="user_healthhistory" schema="" catalog="inshape" columns="iduser"/>
+      <exported-key name="fk_user_language_iduser" table="user_language" schema="" catalog="inshape" columns="iduser"/>
+      <exported-key name="fk_user_webpagetype_iduser" table="user_webpagetype" schema="" catalog="inshape" columns="iduser"/>
+      <exported-key name="fk_useraccount_iduser" table="useraccount" schema="" catalog="inshape" columns="iduser"/>
+      <exported-key name="fk_usernotification_iduser" table="usernotification" schema="" catalog="inshape" columns="iduser"/>
+      <exported-key name="fk_userstatistics_iduser" table="userstatistics" schema="" catalog="inshape" columns="iduser"/>
+      <exported-key name="usertoken_ibfk_1" table="usertoken" schema="" catalog="inshape" columns="iduser"/>
+      <index name="uq_user_email" unique="true" columns="email"/>
+      <index name="uq_user_username" unique="true" columns="username"/>
+      <index name="ix_user_idbinarydata" unique="false" columns="idbinarydata"/>
+      <index name="ix_user_idcompanytype" unique="false" columns="idcompanytype"/>
+      <index name="ix_user_idcountrytype" unique="false" columns="idcountrytype"/>
+      <index name="ix_user_idinterfacelanguage" unique="false" columns="idinterfacelanguage"/>
+      <index name="ix_user_idregistrationtype" unique="false" columns="idregistrationtype"/>
+      <index name="ix_user_idroletype" unique="false" columns="idroletype"/>
+      <index name="ix_user_iduserstatustype" unique="false" columns="iduserstatustype"/>
+    </table>
+    <table name="user_availableequipment" schema="" catalog="inshape" type="TABLE">
+      <column name="iduser" sqlType="VARCHAR" length="8" precision="0" nullable="false" jdbcType="12"/>
+      <column name="idavailableequipmenttype" sqlType="VARCHAR" length="64" precision="0" nullable="false" jdbcType="12"/>
+      <column name="otherequipment" sqlType="VARCHAR" length="4000" precision="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="iduser,idavailableequipmenttype"/>
+      <foreign-key name="fk_user_availableequipment_idavailableequipmenttype" columns="idavailableequipmenttype" ref-table="availableequipmenttype" ref-schema="" ref-catalog="inshape" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_user_availableequipment_iduser" columns="iduser" ref-table="user" ref-schema="" ref-catalog="inshape" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="ix_user_availableequipment_idavailableequipmenttype" unique="false" columns="idavailableequipmenttype"/>
+    </table>
+    <table name="user_connection" schema="" catalog="inshape" type="TABLE">
+      <column name="iduser" sqlType="VARCHAR" length="8" precision="0" nullable="false" jdbcType="12"/>
+      <column name="idconnectiontype" sqlType="VARCHAR" length="64" precision="0" nullable="false" jdbcType="12"/>
+      <column name="username" sqlType="VARCHAR" length="64" precision="0" nullable="false" jdbcType="12"/>
+      <column name="datecreated" sqlType="TIMESTAMP" length="19" precision="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA="/>
+      <primary-key name="PRIMARY" columns="iduser,idconnectiontype"/>
+      <foreign-key name="fk_userconnection_idconnectiontype" columns="idconnectiontype" ref-table="connectiontype" ref-schema="" ref-catalog="inshape" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_userconnection_iduser" columns="iduser" ref-table="user" ref-schema="" ref-catalog="inshape" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="ix_userconnection_idconnectiontype" unique="false" columns="idconnectiontype"/>
+      <index name="ix_userconnection_iduser" unique="false" columns="iduser"/>
+    </table>
+    <table name="user_goal" schema="" catalog="inshape" type="TABLE">
+      <column name="iduser" sqlType="VARCHAR" length="8" precision="0" nullable="false" jdbcType="12"/>
+      <column name="idgoaltype" sqlType="VARCHAR" length="64" precision="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="iduser,idgoaltype"/>
+      <foreign-key name="fk_user_goal_idgoaltype" columns="idgoaltype" ref-table="goaltype" ref-schema="" ref-catalog="inshape" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_user_goal_iduser" columns="iduser" ref-table="user" ref-schema="" ref-catalog="inshape" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="ix_user_goal_idgoaltype" unique="false" columns="idgoaltype"/>
+    </table>
+    <table name="user_healthhistory" schema="" catalog="inshape" type="TABLE">
+      <column name="iduser" sqlType="VARCHAR" length="8" precision="0" nullable="false" jdbcType="12"/>
+      <column name="idhealthhistorytype" sqlType="VARCHAR" length="64" precision="0" nullable="false" jdbcType="12"/>
+      <column name="ispositiveanswer" sqlType="BIT" length="1" precision="0" nullable="false" jdbcType="-7"/>
+      <column name="comment" sqlType="VARCHAR" length="4000" precision="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="iduser,idhealthhistorytype"/>
+      <foreign-key name="fk_user_healthhistory_idhealthhistorytype" columns="idhealthhistorytype" ref-table="healthhistorytype" ref-schema="" ref-catalog="inshape" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_user_healthhistory_iduser" columns="iduser" ref-table="user" ref-schema="" ref-catalog="inshape" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="ix_user_healthhistory_idhealthhistorytype" unique="false" columns="idhealthhistorytype"/>
+    </table>
+    <table name="user_language" schema="" catalog="inshape" type="TABLE">
+      <column name="iduser" sqlType="VARCHAR" length="8" precision="0" nullable="false" jdbcType="12"/>
+      <column name="idlanguagetype" sqlType="VARCHAR" length="2" precision="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="iduser,idlanguagetype"/>
+      <foreign-key name="fk_user_language_idlanguagetype" columns="idlanguagetype" ref-table="languagetype" ref-schema="" ref-catalog="inshape" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_user_language_iduser" columns="iduser" ref-table="user" ref-schema="" ref-catalog="inshape" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="ix_user_language_idlanguagetype" unique="false" columns="idlanguagetype"/>
+    </table>
+    <table name="user_webpagetype" schema="" catalog="inshape" type="TABLE">
+      <column name="iduser" sqlType="VARCHAR" length="8" precision="0" nullable="false" jdbcType="12"/>
+      <column name="idwebpagetype" sqlType="VARCHAR" length="64" precision="0" nullable="false" jdbcType="12"/>
+      <column name="numberofvisits" sqlType="INT UNSIGNED" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <column name="datecreated" sqlType="TIMESTAMP" length="19" precision="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA="/>
+      <column name="dateupdated" sqlType="TIMESTAMP" length="19" precision="0" nullable="true" jdbcType="93"/>
+      <primary-key name="PRIMARY" columns="iduser,idwebpagetype"/>
+      <foreign-key name="fk_user_webpagetype_iduser" columns="iduser" ref-table="user" ref-schema="" ref-catalog="inshape" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_user_webpagetype_idwebpagetype" columns="idwebpagetype" ref-table="webpagetype" ref-schema="" ref-catalog="inshape" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="ix_user_webpagetype_idwebpagetype" unique="false" columns="idwebpagetype"/>
+    </table>
+    <table name="useraccount" schema="" catalog="inshape" type="TABLE">
+      <column name="iduser" sqlType="VARCHAR" length="8" precision="0" nullable="false" jdbcType="12"/>
+      <column name="iban" sqlType="VARCHAR" length="64" precision="0" nullable="true" jdbcType="12"/>
+      <column name="bankname" sqlType="VARCHAR" length="64" precision="0" nullable="true" jdbcType="12"/>
+      <column name="accountnumber" sqlType="VARCHAR" length="64" precision="0" nullable="true" jdbcType="12"/>
+      <column name="currentbalance" sqlType="DOUBLE" length="22" precision="0" nullable="true" jdbcType="8"/>
+      <column name="lockedbalance" sqlType="DOUBLE" length="22" precision="0" nullable="true" jdbcType="8"/>
+      <column name="promobalance" sqlType="DOUBLE" length="22" precision="0" nullable="true" jdbcType="8"/>
+      <primary-key name="PRIMARY" columns="iduser"/>
+      <foreign-key name="fk_useraccount_iduser" columns="iduser" ref-table="user" ref-schema="" ref-catalog="inshape" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+    </table>
+    <table name="usernotification" schema="" catalog="inshape" type="TABLE">
+      <column name="id" sqlType="VARCHAR" length="8" precision="0" nullable="false" jdbcType="12"/>
+      <column name="iduser" sqlType="VARCHAR" length="8" precision="0" nullable="false" jdbcType="12"/>
+      <column name="idtraining" sqlType="VARCHAR" length="8" precision="0" nullable="true" jdbcType="12"/>
+      <column name="idnotificationkindtype" sqlType="VARCHAR" length="64" precision="0" nullable="false" jdbcType="12"/>
+      <column name="idnotificationmethodtype" sqlType="VARCHAR" length="64" precision="0" nullable="false" jdbcType="12"/>
+      <column name="datecreated" sqlType="TIMESTAMP" length="19" precision="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA="/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="fk_usernotification_idnotificationkindtype" columns="idnotificationkindtype" ref-table="notificationkindtype" ref-schema="" ref-catalog="inshape" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_usernotification_idnotificationmethodtype" columns="idnotificationmethodtype" ref-table="notificationmethodtype" ref-schema="" ref-catalog="inshape" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_usernotification_idtraining" columns="idtraining" ref-table="training" ref-schema="" ref-catalog="inshape" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_usernotification_iduser" columns="iduser" ref-table="user" ref-schema="" ref-catalog="inshape" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="ix_usernotification_idnotificationkindtype" unique="false" columns="idnotificationkindtype"/>
+      <index name="ix_usernotification_idnotificationmethodtype" unique="false" columns="idnotificationmethodtype"/>
+    </table>
+    <table name="userstatistics" schema="" catalog="inshape" type="TABLE">
+      <column name="id" sqlType="VARCHAR" length="8" precision="0" nullable="false" jdbcType="12"/>
+      <column name="iduser" sqlType="VARCHAR" length="8" precision="0" nullable="true" jdbcType="12"/>
+      <column name="iduserstatisticstype" sqlType="VARCHAR" length="64" precision="0" nullable="false" jdbcType="12"/>
+      <column name="datecreated" sqlType="TIMESTAMP" length="19" precision="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA="/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="fk_userstatistics_iduser" columns="iduser" ref-table="user" ref-schema="" ref-catalog="inshape" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_userstatistics_iduserstatisticstype" columns="iduserstatisticstype" ref-table="userstatisticstype" ref-schema="" ref-catalog="inshape" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="ix_userstatistics_iduser" unique="false" columns="iduser"/>
+      <index name="ix_userstatistics_iduserstatisticstype" unique="false" columns="iduserstatisticstype"/>
+    </table>
+    <table name="userstatisticstype" schema="" catalog="inshape" type="TABLE">
+      <column name="id" sqlType="VARCHAR" length="64" precision="0" nullable="false" jdbcType="12"/>
+      <column name="name" sqlType="VARCHAR" length="64" precision="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="fk_userstatistics_iduserstatisticstype" table="userstatistics" schema="" catalog="inshape" columns="iduserstatisticstype"/>
+    </table>
+    <table name="userstatustype" schema="" catalog="inshape" type="TABLE">
+      <column name="id" sqlType="VARCHAR" length="64" precision="0" nullable="false" jdbcType="12"/>
+      <column name="name" sqlType="VARCHAR" length="64" precision="0" nullable="false" jdbcType="12"/>
+      <column name="displayorder" sqlType="SMALLINT" length="5" precision="0" nullable="false" jdbcType="5"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <index name="uq_userstatustype_displayorder" unique="true" columns="displayorder"/>
+    </table>
+    <table name="usertoken" schema="" catalog="inshape" type="TABLE">
+      <column name="iduser" sqlType="VARCHAR" length="8" precision="0" nullable="false" jdbcType="12"/>
+      <column name="token" sqlType="VARCHAR" length="16" precision="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="iduser"/>
+      <foreign-key name="usertoken_ibfk_1" columns="iduser" ref-table="user" ref-schema="" ref-catalog="inshape" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="ix_usertoken_iduser" unique="false" columns="iduser"/>
+    </table>
+    <table name="videosourcetype" schema="" catalog="inshape" type="TABLE">
+      <column name="id" sqlType="VARCHAR" length="64" precision="0" nullable="false" jdbcType="12"/>
+      <column name="name" sqlType="VARCHAR" length="64" precision="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="fk_blog_video_idvideosourcetype" table="blog_video" schema="" catalog="inshape" columns="idvideosourcetype"/>
+      <exported-key name="fk_trainer_video_idvideosourcetype" table="trainer_video" schema="" catalog="inshape" columns="idvideosourcetype"/>
+    </table>
+    <table name="webpagetype" schema="" catalog="inshape" type="TABLE">
+      <column name="id" sqlType="VARCHAR" length="64" precision="0" nullable="false" jdbcType="12"/>
+      <column name="name" sqlType="VARCHAR" length="64" precision="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="fk_user_webpagetype_idwebpagetype" table="user_webpagetype" schema="" catalog="inshape" columns="idwebpagetype"/>
+    </table>
+    <table name="workinghourstype" schema="" catalog="inshape" type="TABLE">
+      <column name="id" sqlType="VARCHAR" length="64" precision="0" nullable="false" jdbcType="12"/>
+      <column name="name" sqlType="VARCHAR" length="64" precision="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="trainer_workinghours_ibfk_3" table="trainer_workinghours" schema="" catalog="inshape" columns="idworkinghourstype"/>
+    </table>
+    <table name="workouttype" schema="" catalog="inshape" type="TABLE">
+      <column name="id" sqlType="VARCHAR" length="64" precision="0" nullable="false" jdbcType="12"/>
+      <column name="name" sqlType="VARCHAR" length="64" precision="0" nullable="false" jdbcType="12"/>
+      <column name="displayorder" sqlType="SMALLINT" length="5" precision="0" nullable="false" jdbcType="5"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="fk_goal_workouttype_idworkouttype" table="goal_workouttype" schema="" catalog="inshape" columns="idworkouttype"/>
+      <exported-key name="fk_trainer_workouttype_idworkouttype" table="trainer_workouttype" schema="" catalog="inshape" columns="idworkouttype"/>
+      <exported-key name="fk_training_idworkouttype" table="training" schema="" catalog="inshape" columns="idworkouttype"/>
+      <index name="uq_workouttype_displayorder" unique="true" columns="displayorder"/>
+    </table>
+    <procedure name="end_dbversion" schema="" catalog="inshape" type="1">
+      <prototype>
+        <parameter name="pversionnumber" sqlType="VARCHAR" length="32" precision="32" nullable="true" jdbcType="12" type="1" index="1"/>
+      </prototype>
+    </procedure>
+    <procedure name="start_dbversion" schema="" catalog="inshape" type="1">
+      <prototype>
+        <parameter name="pversionnumber" sqlType="VARCHAR" length="32" precision="32" nullable="true" jdbcType="12" type="1" index="1"/>
+        <parameter name="pdescription" sqlType="VARCHAR" length="16000" precision="16000" nullable="true" jdbcType="12" type="1" index="2"/>
+      </prototype>
+    </procedure>
+  </data-source>
+</component>
